@@ -17,7 +17,14 @@ string hostname[4];
 // send object
 OscSend xmit;
 
-//set namespace
+//aim osc sender
+function void aim(string ipTarget, int portNumber)
+        {
+                xmit.setHost(ipTarget, portNumber);
+        }
+
+
+//set target namespace
 function void SetNameSpace(string NameSpaceIn)
 {
 	NameSpaceIn => NameSpace;
@@ -27,12 +34,20 @@ function void SetNameSpace(string NameSpaceIn)
     // the type string ',f' expects a single float argument
     //xmit.startMsg( NameSpace, "f" );
 
-function void aim(string ipTarget, int portNumber)
-	{
- 		xmit.setHost(ipTarget, portNumber);
-	}
+function void SendOSC(float ff)
+{
+	xmit.startMsg(NameSpace, "f");
+	ff => xmit.addFloat;
+}
 
-function void slimesendf()
+function void sendOSC(string s, int port, string ns, float fff)
+{
+aim(s, port);
+SetNameSpace(ns);
+SendOSC(fff);
+}
+
+function void slimesendtest()
 	{
 	xmit.startMsg(NameSpace, "f" );	
 	//TODO remove hard coding of for loop relate to hostname[]
@@ -54,6 +69,8 @@ function void slimesendf()
 
 SlimeCore sc;
 
-sc.slimesendf();
+//sc.slimesendtest();
+
+sc.sendOSC("127.0.0.1", 9999, "/hello", 0.5);
 
 2000::ms => now;
