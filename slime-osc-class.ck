@@ -36,7 +36,7 @@ function void SetNameSpace(string NameSpaceIn)
 
 function void SendOSC(float ff)
 {
-	xmit.startMsg(NameSpace, "f");
+	xmit.startMsg( NameSpace, "f" );
 	ff => xmit.addFloat;
 }
 
@@ -71,6 +71,6 @@ SlimeCore sc;
 
 //sc.slimesendtest();
 
-sc.sendOSC("127.0.0.1", 9999, "/hello", 0.5);
+sc.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
 
-2000::ms => now;
+//10::ms => now;
