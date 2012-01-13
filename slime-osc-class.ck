@@ -34,7 +34,7 @@ function void SetNameSpace(string NameSpaceIn)
     // the type string ',f' expects a single float argument
     //xmit.startMsg( NameSpace, "f" );
 
-function void SendOSC(float ff)
+function void MakeAndSendOSC(float ff)
 {
 	xmit.startMsg( NameSpace, "f" );
 	ff => xmit.addFloat;
@@ -44,7 +44,7 @@ function void sendOSC(string s, int port, string ns, float fff)
 {
 aim(s, port);
 SetNameSpace(ns);
-SendOSC(fff);
+MakeAndSendOSC(fff);
 }
 
 function void slimesendtest()
@@ -67,10 +67,11 @@ function void slimesendtest()
 	}
 }
 
-SlimeCore sc;
+//SlimeCore sc;
 
 //sc.slimesendtest();
 
-sc.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
+//sc.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
 
 //10::ms => now;
+
