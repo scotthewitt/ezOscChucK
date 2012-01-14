@@ -40,11 +40,27 @@ function void MakeAndSendOSC(float ff)
 	ff => xmit.addFloat;
 }
 
+//class_name.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
+
 function void sendOSC(string s, int port, string ns, float fff)
 {
 aim(s, port);
 SetNameSpace(ns);
 MakeAndSendOSC(fff);
+}
+
+function void sendOSC(string s, int port, string ns, float fff)
+{
+aim(s, port);
+SetNameSpace(ns);
+MakeAndSendOSC(fff);
+}
+
+function void sendOSCTest(string s, int port, string ns)
+{
+aim(s, port);
+SetNameSpace(ns);
+MakeAndSendOSC(Std.rand2f(0.,1.));
 }
 
 function void slimesendtest()
@@ -72,6 +88,8 @@ function void slimesendtest()
 //sc.slimesendtest();
 
 //sc.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
+
+//sc.sendOSCTest("127.0.0.1", 10000, "/hello/letsgo");
 
 //10::ms => now;
 
