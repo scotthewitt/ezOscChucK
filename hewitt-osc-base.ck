@@ -27,6 +27,7 @@ function void MakeAndSendOSC(float ff)
 {
 	xmit.startMsg( NameSpace, "f" );
 	ff => xmit.addFloat;
+	<<< NameSpace, ff >>>;
 }
 
 //class_name.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
@@ -37,14 +38,7 @@ SetNameSpace(ns);
 MakeAndSendOSC(fff);
 }
 
-function void sendOSC(string s, int port, string ns, float fff)
-{
-aim(s, port);
-SetNameSpace(ns);
-MakeAndSendOSC(fff);
-}
-
-function void sendOSCTest(string s, int port, string ns)
+function void sendOSC(string s, int port, string ns)
 {
 aim(s, port);
 SetNameSpace(ns);
@@ -53,11 +47,11 @@ MakeAndSendOSC(Std.rand2f(0.,1.));
 
 }
 
-OSCBase hob;
+//OSCBase hob;
 
-hob.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
+//hob.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
 
-hob.sendOSCTest("127.0.0.1", 10000, "/hello/letsgo");
+//hob.sendOSC("127.0.0.1", 10000, "/hello/letsgo");
 
 //10::ms => now;
 
