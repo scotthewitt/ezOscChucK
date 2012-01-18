@@ -30,6 +30,22 @@ function void MakeAndSendOSC(float ff)
 	<<< NameSpace, ff >>>;
 }
 
+function void MakeAndSendOSC(int ss)
+{
+        xmit.startMsg( NameSpace, "i" );
+        ss => xmit.addInt;
+        <<< NameSpace, ss >>>;
+}
+
+function void MakeAndSendOSC(int ss, int s2)
+{
+        xmit.startMsg( NameSpace, "i i" );
+        ss => xmit.addInt;
+	s2 => xmit.addInt;
+        <<< NameSpace, ss >>>;
+}
+
+
 function void MakeAndSendOSC(string ss)
 {
         xmit.startMsg( NameSpace, "s" );
@@ -43,7 +59,7 @@ function void MakeAndSendOSC(string s1, string s2, string s3)
         s1 => xmit.addString;
 s2 => xmit.addString;
 s3 => xmit.addString;
-        <<< NameSpace, ss >>>;
+        <<< NameSpace, s1 >>>;
 }
 
 function void MakeAndSendOSC(string s1, string s2, string s3, string s4, string s5)
@@ -54,7 +70,7 @@ s2 => xmit.addString;
 s3 => xmit.addString;
 s4 => xmit.addString;
 s5 => xmit.addString;
-        <<< NameSpace, ss >>>;
+        <<< NameSpace, s1 >>>;
 }
 
 
@@ -65,6 +81,23 @@ aim(s, port);
 SetNameSpace(ns);
 MakeAndSendOSC(fff);
 }
+
+function void sendOSC(string s, int port, string ns, int fff)
+{
+aim(s, port);
+SetNameSpace(ns);
+MakeAndSendOSC(fff);
+}
+
+function void sendOSC(string s, int port, string ns, int fff, int ffff)
+{
+aim(s, port);
+SetNameSpace(ns);
+MakeAndSendOSC(fff,ffff);
+}
+
+
+
 
 function void sendOSC(string s, int port, string ns, string fff)
 {
