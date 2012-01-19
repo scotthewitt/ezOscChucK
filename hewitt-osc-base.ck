@@ -42,15 +42,15 @@ function void MakeAndSendOSC(int ss, int s2)
         xmit.startMsg( NameSpace, "i i" );
         ss => xmit.addInt;
 	s2 => xmit.addInt;
-        <<< NameSpace, ss >>>;
+        <<< NameSpace, ss, s2 >>>;
 }
 
 
-function void MakeAndSendOSC(string ss)
+function void MakeAndSendOSC(string s1)
 {
         xmit.startMsg( NameSpace, "s" );
-        ss => xmit.addString;
-        <<< NameSpace, ss >>>;
+        s1 => xmit.addString;
+        <<< NameSpace, s1 >>>;
 }  
 
 function void MakeAndSendOSC(string s1, string s2, string s3)
@@ -59,7 +59,7 @@ function void MakeAndSendOSC(string s1, string s2, string s3)
         s1 => xmit.addString;
 s2 => xmit.addString;
 s3 => xmit.addString;
-        <<< NameSpace, s1 >>>;
+        <<< NameSpace, s1, s2, s3 >>>;
 }
 
 function void MakeAndSendOSC(string s1, string s2, string s3, string s4, string s5)
@@ -70,57 +70,52 @@ s2 => xmit.addString;
 s3 => xmit.addString;
 s4 => xmit.addString;
 s5 => xmit.addString;
-        <<< NameSpace, s1 >>>;
+        <<< NameSpace, s1, s2, s3, s4, s5 >>>;
 }
 
 
 //class_name.sendOSC("127.0.0.1", 10000, "/hello/letsgo", 0.5);
-function void sendOSC(string s, int port, string ns, float fff)
+function void sendOSC(string s, int port, string ns, float f1)
 {
 aim(s, port);
 SetNameSpace(ns);
-MakeAndSendOSC(fff);
+MakeAndSendOSC(f1);
 }
 
-function void sendOSC(string s, int port, string ns, int fff)
+function void sendOSC(string s, int port, string ns, int i1)
 {
 aim(s, port);
 SetNameSpace(ns);
-MakeAndSendOSC(fff);
+MakeAndSendOSC(i1);
 }
 
-function void sendOSC(string s, int port, string ns, int fff, int ffff)
+function void sendOSC(string s, int port, string ns, int i1, int i2)
 {
 aim(s, port);
 SetNameSpace(ns);
-MakeAndSendOSC(fff,ffff);
+MakeAndSendOSC(i1,i2);
 }
 
-
-
-
-function void sendOSC(string s, int port, string ns, string fff)
+function void sendOSC(string s, int port, string ns, string s1)
 {
 aim(s, port);
 SetNameSpace(ns);
-MakeAndSendOSC(fff);                
+MakeAndSendOSC(s1);                
 }
 
-function void sendOSC(string s, int port, string ns, string fff, string ffff, string fffff)
+function void sendOSC(string s, int port, string ns, string f1, string f2, string f3)
 {
 aim(s, port);
 SetNameSpace(ns);
-MakeAndSendOSC(fff,ffff,fffff);
+MakeAndSendOSC(f1,f2,f3);
 }
 
-function void sendOSC(string s, int port, string ns, string fff, string ffff, string fffff, string f4, string f5)
+function void sendOSC(string s, int port, string ns, string f1, string f2, string f3, string f4, string f5)
 {
 aim(s, port);
 SetNameSpace(ns);
-MakeAndSendOSC(fff,ffff,fffff, f4, f5);
+MakeAndSendOSC(f1,f2,f3, f4, f5);
 }
-
-
 
 function void sendOSC(string s, int port, string ns)
 {
@@ -138,4 +133,3 @@ MakeAndSendOSC(Std.rand2f(0.,1.));
 //hob.sendOSC("127.0.0.1", 10000, "/hello/letsgo");
 
 //10::ms => now;
-

@@ -8,9 +8,13 @@ public class SlimeBase extends OSCBase {
 	"192.168.1.6" => hostname[4];
 	10000 => portNumber;
 
+hostname.size() =>  int slimeSize;
+
+<<< "slime-size", slimeSize >>>;
+
 function void slimeCore(string ns)
 {
-        for(0 => int i; i < 5; i++)
+        for(0 => int i; i < slimeSize; i++)
         {
                 //hostname[i] => string nss;
                 sendOSC(hostname[i],portNumber,ns);
@@ -21,7 +25,7 @@ function void slimeCore(string ns)
 
 function void slimeCore(string ns, float f)
 {
-        for(0 => int i; i < 4; i++)
+        for(0 => int i; i < slimeSize; i++)
         {
                 //hostname[i] => string nss;
                 sendOSC(hostname[i],portNumber,ns,f);
@@ -30,30 +34,27 @@ function void slimeCore(string ns, float f)
 
 }
 
-function void slimeCore(string ns, int f)
+function void slimeCore(string ns, int i1)
 {
-        for(0 => int i; i < 4; i++)
+        for(0 => int i; i < slimeSize; i++)
         {
                 //hostname[i] => string nss;
-                sendOSC(hostname[i],portNumber,ns,f);
+                sendOSC(hostname[i],portNumber,ns,i1);
                 <<< hostname[i] >>>;
         }
 
 }
 
-function void slimeCore(string ns, int f, int f2)
+function void slimeCore(string ns, int i1, int i2)
 {
-        for(0 => int i; i < 4; i++)
+        for(0 => int i; i < slimeSize; i++)
         {
                 //hostname[i] => string nss;
-                sendOSC(hostname[i],portNumber,ns,f,f2);
+                sendOSC(hostname[i],portNumber,ns,i1,i2);
                 <<< hostname[i] >>>;
         }
 
 }
-
-
-
 
 function void send()
 {
@@ -70,12 +71,10 @@ function void send(string ns, float f)
 	slimeCore(ns,f);
 }
 
-function void send(string ns, int f, int f)
+function void send(string ns, int i1, int i2)
 {
-        slimeCore(ns,f,f);
+        slimeCore(ns,i1,i2);
 }
-
-
 
 }
 
