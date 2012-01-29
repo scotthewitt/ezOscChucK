@@ -1,11 +1,12 @@
 public class SlimeBase extends OSCBase {
 	// host name and port
-	string hostname[5];
+	string hostname[6];
 	"192.168.1.2" => hostname[0];
 	"192.168.1.3" => hostname[1];
 	"192.168.1.4" => hostname[2];
 	"192.168.1.5" => hostname[3];
 	"192.168.1.6" => hostname[4];
+	"192.168.1.7" => hostname[5];
 	10000 => portNumber;
 
 hostname.size() =>  int slimeSize;
