@@ -7,6 +7,8 @@ public class OSCBase
 
 10000 => int  portNumber;
 
+int monitor;
+
 // send object
 OscSend xmit;
 
@@ -27,14 +29,18 @@ function void MakeAndSendOSC(float ff)
 {
 	xmit.startMsg( NameSpace, "f" );
 	ff => xmit.addFloat;
+	if(monitor){
 	<<< NameSpace, ff >>>;
+	}
 }
 
 function void MakeAndSendOSC(int ss)
 {
         xmit.startMsg( NameSpace, "i" );
         ss => xmit.addInt;
+	if(monitor){
         <<< NameSpace, ss >>>;
+	}
 }
 
 function void MakeAndSendOSC(int ss, int s2)
@@ -42,7 +48,9 @@ function void MakeAndSendOSC(int ss, int s2)
         xmit.startMsg( NameSpace, "i i" );
         ss => xmit.addInt;
 	s2 => xmit.addInt;
-        <<< NameSpace, ss, s2 >>>;
+        if(monitor){
+	<<< NameSpace, ss, s2 >>>;
+	}
 }
 
 
@@ -50,16 +58,20 @@ function void MakeAndSendOSC(string s1)
 {
         xmit.startMsg( NameSpace, "s" );
         s1 => xmit.addString;
-        <<< NameSpace, s1 >>>;
+        if(monitor){
+	<<< NameSpace, s1 >>>;
+	}
 }  
 
 function void MakeAndSendOSC(string s1, string s2, string s3)
 {
         xmit.startMsg( NameSpace, "s, s, s" );
         s1 => xmit.addString;
-s2 => xmit.addString;
-s3 => xmit.addString;
-        <<< NameSpace, s1, s2, s3 >>>;
+	s2 => xmit.addString;
+	s3 => xmit.addString;
+        if(monitor){
+	<<< NameSpace, s1, s2, s3 >>>;
+	}	
 }
 
 function void MakeAndSendOSC(string s1, string s2, string s3, string s4, string s5)
@@ -70,7 +82,9 @@ s2 => xmit.addString;
 s3 => xmit.addString;
 s4 => xmit.addString;
 s5 => xmit.addString;
-        <<< NameSpace, s1, s2, s3, s4, s5 >>>;
+        if(monitor){
+	<<< NameSpace, s1, s2, s3, s4, s5 >>>;
+	}
 }
 
 

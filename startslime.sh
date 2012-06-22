@@ -6,4 +6,4 @@ chuck + hewitt-osc-base.ck slime-helopg.ck static-slime.ck
 
 echo "Slime started for HELOpg."
 
-echo "Slime.s.send();"
+echo "Slime.s.send("/ns",value);"
