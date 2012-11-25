@@ -1,4 +1,4 @@
-EzOsscChucK
+EzOscChucK
 
 A simple to use OSC set of classes for use within ChucK
 
