@@ -1,3 +1,0 @@
-// Slime Piece 1
-
-Slime.s.send("/ns",value);
